@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kam's Games</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <span class="logo-icon">K</span>
+            <span>Kam's Games</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-link active" data-filter="all">
+                <i data-lucide="house"></i>
+                Home
+            </button>
+
+            <button class="nav-link" data-filter="Puzzle">
+                <i data-lucide="puzzle"></i>
+                Puzzle
+            </button>
+
+            <button class="nav-link" data-filter="Arcade">
+                <i data-lucide="gamepad-2"></i>
+                Arcade
+            </button>
+
+            <button class="nav-link" data-filter="Racing">
+                <i data-lucide="car"></i>
+                Racing
+            </button>
+
+            <button class="nav-link" data-filter="Sports">
+                <i data-lucide="trophy"></i>
+                Sports
+            </button>
+
+            <button class="nav-link" data-filter="favorites">
+                <i data-lucide="heart"></i>
+                Favorites
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-note">
+                <i data-lucide="gamepad-2"></i>
+                <span>Find your next favorite game.</span>
+            </div>
+        </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="page-label">GAME LIBRARY</span>
+            </div>
+
+            <div class="topbar-right">
+                <span id="clock">Loading time...</span>
+            </div>
+        </header>
+
+
+        <!-- WELCOME SECTION -->
+        <section class="welcome-banner">
+            <div class="welcome-content">
+                <span class="welcome-tag">WELCOME TO KAM'S GAMES</span>
+
+                <h1>Find something fun to play.</h1>
+
+                <p>
+                    Browse games, discover new favorites,
+                    and start playing instantly.
+                </p>
+
+                <a href="#gameLibrary" class="primary-button">
+                    Explore Games
+                    <i data-lucide="arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+
+        <!-- FEATURED GAME -->
+        <section class="featured-section">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">FEATURED</span>
+                    <h2>Featured Game</h2>
+                </div>
+            </div>
+
+            <div class="featured-game" id="featuredGame">
+                <div class="featured-placeholder">
+                    Loading featured game...
+                </div>
+            </div>
+        </section>
+
+
+        <!-- GAME LIBRARY -->
+        <section class="library-section" id="gameLibrary">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">EXPLORE</span>
+                    <h2>Game Library</h2>
+                    <p id="gameCount">Loading games...</p>
+                </div>
+            </div>
+
+
+            <!-- SEARCH AND SORT -->
+            <div class="library-controls">
+
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        id="gameSearch"
+                        placeholder="Search games..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <select id="sortGames">
+                    <option value="az">Name: A-Z</option>
+                    <option value="za">Name: Z-A</option>
+                </select>
+
+            </div>
+
+
+            <!-- CATEGORY FILTERS -->
+            <div class="category-filters">
+                <button class="category-button active"
+                    data-filter="all">All Games</button>
+
+                <button class="category-button"
+                    data-filter="Puzzle">Puzzle</button>
+
+                <button class="category-button"
+                    data-filter="Arcade">Arcade</button>
+
+                <button class="category-button"
+                    data-filter="Racing">Racing</button>
+
+                <button class="category-button"
+                    data-filter="Sports">Sports</button>
+
+                <button class="category-button"
+                    data-filter="Platformer">Platformer</button>
+            </div>
+
+
+            <!-- GAME CARDS -->
+            <div class="games-grid" id="gamesGrid">
+                <div class="loading-message">
+                    Loading your games...
+                </div>
+            </div>
+
+            <div id="loadError" class="load-error" hidden>
+                The game catalog could not be loaded.
+                Please refresh the page and try again.
+            </div>
+
+        </section>
+
+        <footer class="footer">
+            <p>Kam's Games · Game Library</p>
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- GAME PLAYER -->
+<div class="game-modal" id="gameModal">
+
+    <div class="game-toolbar">
+
+        <div class="game-toolbar-left">
+            <button class="toolbar-button" id="closeGame">
+                <i data-lucide="arrow-left"></i>
+                Back
+            </button>
+
+            <span class="game-player-title" id="gameTitle">
+                Game
+            </span>
+        </div>
+
+        <div class="game-actions">
+
+            <button class="toolbar-button" id="fullscreenButton">
+                <i data-lucide="maximize"></i>
+                Fullscreen
+            </button>
+
+            <button class="toolbar-button" id="separateTabButton">
+                <i data-lucide="external-link"></i>
+                Separate Tab
+            </button>
+
+            <button class="toolbar-button close-button" id="closeGameTop">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="game-frame-container">
+
+        <iframe
+            id="gameFrame"
+            title="Game"
+            allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+</body>
+</html>
